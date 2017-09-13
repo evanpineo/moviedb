@@ -59,5 +59,4 @@ source 'https://rails-assets.org' do
 end
 
 gem 'figaro'
-gem 'themoviedb'
-gem 'simple_form'
+gem 'httparty'

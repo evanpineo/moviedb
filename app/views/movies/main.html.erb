@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="search">
+    <h1>Movie Poster Search</h1>
+    <div id="fetch">
+      <input type="text" placeholder="enter movie title here" id="term" />
+      <button id="search">Find</button>
+    </div>
+    <div class="container">
+      <div id="poster" class="row center"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $.get("http://localhost:3030/search?=query").success(function(data) {
+    
+  })
+</script>

@@ -1,5 +1,9 @@
-<div class="col-10 offset-1">
-    <% @movie.each do |m| %>
-        <%= m.inspect %>
-    <% end %>
+<div class="container">
+    <div id="movie" class="well"></div>
 </div>
+
+<script>
+  $.get("https://firehose-epineo.c9users.io/search?=query").success(function(data) {
+    data.body;
+  })
+</script>
