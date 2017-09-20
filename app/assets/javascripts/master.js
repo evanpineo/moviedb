@@ -1,7 +1,5 @@
-/* global $ */
-
 $(document).ready(function() {
-
+	
 	$('#term').focus(function() {
 		var full = $("#poster").has("img").length ? true : false;
 		if(full == false) {
@@ -18,7 +16,7 @@ $(document).ready(function() {
 
 });
 
-var search_movie_url = "https://firehose-epineo.c9users.io/movies/search";
+var search_movie_url = "/movies/search";
 
 var getPoster = function() {
 	var film = $('#term').val();
@@ -39,7 +37,7 @@ var getPoster = function() {
 			            <div class="well text-center">
 		            		<img class="img-responsive" src="https://image.tmdb.org/t/p/w300${movie.poster_path}">
 		            		<h5>${movie.title}</h5>
-		              	<a onclick="movieSelected('${movie.id}')" class="btn btn-primary" href="#">Movie Details</a>
+		              	<button onclick="getMovie('${movie.id}')" class="btn btn-primary">Movie Details</bu>
 			            </div>
 			          </div>`;
         	}
@@ -62,14 +60,8 @@ var getPoster = function() {
 	return false;
 };
 
-function movieSelected(id) {
-	sessionStorage.setItem('id', id);
-	window.location = 'show.html.erb';
-	return false;
-}
 
-function getMovie() {
-	var id = sessionStorage.getItem('id');
+function getMovie(id) {
 	$.getJSON("https://api.themoviedb.org/3/movie/" + id + "?api_key=" + api_key), function(movie) {
 		var output = `
 			<div class="row">
