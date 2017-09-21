@@ -1,5 +1,9 @@
 class MoviesController < ApplicationController
   def show
+    api_key = ENV["TMDB_API_KEY"]
+    movie_id_url = "https://api.themoviedb.org/3/movie/#{id}?api_key=#{api_key}"
+    resp = HTTParty.get(movie_id_url)
+    render json: resp.body
   end
   
   def search

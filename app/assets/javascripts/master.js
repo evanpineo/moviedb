@@ -37,7 +37,7 @@ var getPoster = function() {
 			            <div class="well text-center">
 		            		<img class="img-responsive" src="https://image.tmdb.org/t/p/w300${movie.poster_path}">
 		            		<h5>${movie.title}</h5>
-		              	<button onclick="getMovie('${movie.id}')" class="btn btn-primary">Movie Details</bu>
+		              	<button onclick="getMovie(${movie.id})" class="btn btn-primary">Movie Details</button>
 			            </div>
 			          </div>`;
         	}
@@ -60,9 +60,10 @@ var getPoster = function() {
 	return false;
 };
 
+var movie_id_url = "/movies/";
 
 function getMovie(id) {
-	$.getJSON("https://api.themoviedb.org/3/movie/" + id + "?api_key=" + api_key), function(movie) {
+	$.getJSON(movie_id_url + id), function(movie) {
 		var output = `
 			<div class="row">
         <div class="col-md-4">
