@@ -27,9 +27,9 @@ var getPoster = function() {
 		var output = '';
 		$.getJSON(search_movie_url + "?query=" + film, function(json) {
 			if (json != "Nothing found.") {
-				console.log(json);
+				// console.log(json);
 				$.each(json.results, function(i, item) {
-					console.log(json.results[i].title);
+					// console.log(json.results[i].title);
 					var movie = json.results[i];
 					if (movie.poster_path !== null) {
 						output += `
@@ -63,11 +63,15 @@ var getPoster = function() {
 var movie_id_url = "/movies/";
 
 function getMovie(id) {
-	$.getJSON(movie_id_url + id), function(movie) {
+	$.getJSON(movie_id_url + id), function(json) {
+		console.log(json);
+		$.each(json, function(i, item) {
+		var movie = json[i];
+		console.log(json[i]);
 		var output = `
 			<div class="row">
         <div class="col-md-4">
-          <img src="${movie.poster_path}" class="thumbnail">
+          <img src="https://image.tmdb.org/t/p/w300${movie.backdrop_path}" class="thumbnail">
         </div>
         <div class="col-md-8">
           <h2>${movie.title}</h2>
@@ -90,7 +94,8 @@ function getMovie(id) {
         </div>
       </div>
     `;
+		});
 
-      $('#movie').html(output);
+    $('#movie').html(output);
 	};
 }
